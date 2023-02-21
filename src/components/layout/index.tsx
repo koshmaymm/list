@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
-
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Footer from "../Footer";
+import Header from "../Header";
+import './index.css';
 interface LayoutProps {
     children?: ReactNode
 }
@@ -7,11 +11,14 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
     return (
         <div className="app">
-            {/* <Header /> */}
-            <main className="main">{children}</main>
-            {/* <Footer /> */}
+            <CssBaseline />
+            <Header />
+            <Container maxWidth={false} className="main">
+                {children}
+            </Container>
+            <Footer />
         </div>
     )
 }
 
-export default Layout
+export default Layout;

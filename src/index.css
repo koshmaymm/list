@@ -12,3 +12,11 @@ body {
 a.link {
   text-decoration: none;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: rgb(25, 118, 210);
+}
