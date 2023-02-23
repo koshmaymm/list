@@ -27,3 +27,18 @@
   left: 0;
   min-width: 200px;
 }
+
+@media (max-width: 726px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .wrapper .priority {
+    margin-right: auto;
+  }
+
+  form .button {
+    margin: 10px auto;
+    display: block;
+  }
+}

@@ -82,6 +82,7 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
                 <Button
                     type="submit"
                     variant="contained"
+                    className="button"
                 >
                     Add task
                 </Button>

@@ -13,3 +13,13 @@
   font-weight: bold;
   border: 2px solid gray;
 }
+
+@media (max-width: 726px) {
+  .rating-wrapper {
+    flex-direction: column;
+  }
+
+  .rating-wrapper button {
+    margin-top: 20px;
+  }
+}
