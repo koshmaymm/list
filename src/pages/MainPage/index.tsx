@@ -14,6 +14,10 @@ const MainPage = () => {
     const [editableItem, setEditableItem] = useState<TaskItem | null>(null);
     const [open, setOpen] = useState(false);
 
+
+    console.log("tasksList ", tasksList)
+    console.log("selectedList ", selectedList)
+
     const removeFromSelected = (id: string) => {
         const nextList = selectedList.filter(taskId => taskId !== id);
         setSelectedList(nextList);
@@ -22,6 +26,7 @@ const MainPage = () => {
     const removeTask = (id: string) => {
         const nextList = tasksList.filter(task => task.id !== id);
         setTaskList(nextList);
+        removeFromSelected(id);
     }
 
     const setFilteredListBySelect = useCallback(() => {
