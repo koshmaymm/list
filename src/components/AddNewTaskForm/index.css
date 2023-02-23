@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.wrapper .description {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.wrapper .priority {
+  margin-left: auto;
+}
+
+.wrapper .status {
+  margin-left: 20px;
+}
+
+.text-field {
+  position: relative;
+}
+
+.text-field .MuiFormHelperText-root.Mui-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+}

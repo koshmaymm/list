@@ -1,0 +1,11 @@
+.main-page h1 {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+.list-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+}

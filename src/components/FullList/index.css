@@ -1,0 +1,10 @@
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 8px;
+}
+
+.MuiList-root > div {
+  margin-top: 20px;
+}
