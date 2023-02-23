@@ -1,5 +1,5 @@
-import Button from "@mui/material/Button"
-import { TaskItem, FullListButtonsProps } from "../../interfaces"
+import Button from "@mui/material/Button";
+import { TaskItem, FullListButtonsProps } from "../../interfaces";
 
 const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEditableItem, removeTask }: FullListButtonsProps) => {
 
