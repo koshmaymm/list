@@ -1,12 +1,7 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
-import { AddNewTaskFormProps, TaskItem, FullListProps } from '../../interfaces';
-import Button from '@mui/material/Button';
+import { List, ListItem, Divider, ListItemText, Typography } from '@mui/material';
 import FullListButtons from '../FullListButtons';
+import { TaskItem, FullListProps } from '../../interfaces';
 import './index.css';
 
 const FullList = ({
@@ -15,7 +10,8 @@ const FullList = ({
     selectedList,
     setSelectedList,
     setOpen,
-    setEditableItem
+    setEditableItem,
+    removeTask
 }: FullListProps) => {
 
     if (!tasksList.length) {
@@ -35,7 +31,11 @@ const FullList = ({
     return (
         <div>
             <h2>Full task list</h2>
-            <List sx={{ bgcolor: 'background.paper' }}>
+            <List sx={{
+                bgcolor: 'background.paper',
+                overflow: 'auto',
+                maxHeight: 470,
+            }}>
                 {
                     tasksList.map((item: TaskItem) => {
                         return (
@@ -64,35 +64,12 @@ const FullList = ({
                                     setSelectedList={setSelectedList}
                                     setOpen={setOpen}
                                     setEditableItem={setEditableItem}
+                                    removeTask={removeTask}
                                 />
                             </div>
                         )
                     })
                 }
-                {/* <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                </ListItemAvatar>
-                <ListItemText
-                    primary="Brunch this weekend?"
-                    secondary={
-                        <React.Fragment>
-                            <Typography
-                                sx={{ display: 'inline' }}
-                                component="span"
-                                variant="body2"
-                                color="text.primary"
-                            >
-                                Ali Connors
-                            </Typography>
-                            {" — I'll be in your neighborhood doing errands this…"}
-                        </React.Fragment>
-                    }
-                />
-            </ListItem>
-            <Divider variant="middle" component="li" /> */}
-
-
             </List>
         </div>
     )

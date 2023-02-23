@@ -1,21 +1,19 @@
 import Button from "@mui/material/Button"
 import { TaskItem, FullListButtonsProps } from "../../interfaces"
 
-const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEditableItem }: FullListButtonsProps) => {
+const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEditableItem, removeTask }: FullListButtonsProps) => {
 
     const selectHandler = (id: string): void => {
-        // console.log("selectHandler id ", id);
         setSelectedList([...selectedList, id])
     }
 
     const editHandler = (item: TaskItem): void => {
-        // console.log("editHandler item ", item);
         setOpen(true);
         setEditableItem(item);
     }
 
     const deleteHandler = (id: string): void => {
-        // console.log("deleteHandler id ", id);
+        removeTask(id);
     }
 
     const findElement = (item: TaskItem): boolean => {
@@ -30,6 +28,7 @@ const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEdit
                 variant="contained"
                 onClick={() => selectHandler(item.id)}
                 disabled={item.done || findElement(item)}
+                size="large"
             >
                 Select
             </Button>
@@ -38,6 +37,8 @@ const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEdit
                 variant="contained"
                 onClick={() => editHandler(item)}
                 disabled={item.done}
+                size="large"
+                color="warning"
             >
                 Edit
             </Button>
@@ -46,6 +47,7 @@ const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEdit
                 variant="contained"
                 color="error"
                 onClick={() => deleteHandler(item.id)}
+                size="large"
             >
                 Delete
             </Button>

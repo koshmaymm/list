@@ -1,13 +1,15 @@
 import { Fragment } from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
+import { List, ListItem, Button, Typography, ListItemText, Divider, Rating } from '@mui/material';
 import { TaskItem, SelectedListProps } from '../../interfaces';
-import Rating from '@mui/material/Rating';
+import './index.css';
 
-const SelectedList = ({ favoriteList, setTaskList, }: SelectedListProps) => {
+const SelectedList = ({ favoriteList, selectedList, setSelectedList }: SelectedListProps) => {
+
+
+    const removeHandler = (id: string) => {
+        const nextSelectedList = selectedList.filter(itemId => itemId !== id);
+        setSelectedList(nextSelectedList)
+    }
 
     if (!favoriteList.length) {
         return (<div>
@@ -26,13 +28,18 @@ const SelectedList = ({ favoriteList, setTaskList, }: SelectedListProps) => {
     return (
         <div>
             <h2>Selected task list</h2>
-            <List sx={{ bgcolor: 'background.paper' }}>
+            <List sx={{
+                bgcolor: 'background.paper',
+                overflow: 'auto',
+                maxHeight: 470,
+            }}>
                 {
                     favoriteList.map((item: TaskItem) => {
                         return (
                             <div key={item.id}>
                                 <ListItem alignItems="flex-start">
                                     <ListItemText
+                                        className='task-item'
                                         primary={item.description}
                                         secondary={
                                             <Fragment>
@@ -42,8 +49,21 @@ const SelectedList = ({ favoriteList, setTaskList, }: SelectedListProps) => {
                                                 >
                                                     Status: {item.done ? "Done" : "Pending"}
                                                 </Typography>
-                                                <Typography component="legend">Priority</Typography>
-                                                <Rating name="disabled" value={Number(item.priority)} disabled max={10} />
+                                                <Typography sx={{ display: 'inline' }} component="legend">Priority</Typography>
+                                                <span className='rating-wrapper'>
+                                                    <Rating name="disabled" value={Number(item.priority)} disabled max={10} className='rating' />
+                                                    <Button
+                                                        type="submit"
+                                                        variant="contained"
+                                                        onClick={() => removeHandler(item.id)}
+                                                        disabled={item.done}
+                                                        size="large"
+                                                        color="inherit"
+                                                        className='button-default'
+                                                    >
+                                                        Remove from Selected
+                                                    </Button>
+                                                </span>
                                             </Fragment>
                                         }
                                     />

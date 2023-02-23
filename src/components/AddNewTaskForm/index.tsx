@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-
+import { Checkbox, FormControlLabel, Button, Typography, Box, TextField } from '@mui/material';
 import { AddNewTaskFormProps } from '../../interfaces';
 import './index.css';
 
@@ -39,7 +33,7 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
             setHasErrors(true);
         } else {
             const item = setItemTask(description, priority, status, Date.now().toString());
-            setTaskList([...tasksList, item]);
+            setTaskList([item, ...tasksList,]);
             clearValues();
         }
     };
@@ -106,16 +100,3 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
 }
 
 export default AddNewTaskForm;
-
-            // const data = new FormData(event.currentTarget);
-
-
-        // if(  data.get('description')  && data.get('description')?.toString()  ) {
-
-        // }
-
-        // console.log({
-        //     email: data.get('description'),
-        //     password: data.get('priority'),
-        //     status: data.get('status'),
-        // });
