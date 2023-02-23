@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Checkbox, FormControlLabel, Button, Typography, Box, TextField } from '@mui/material';
-import { setItemTask } from '../../utils';
+import { setArrToLocalStorage, setItemTask } from '../../utils';
+import { savedTasksList } from '../../helpers';
 import { AddNewTaskFormProps } from '../../interfaces';
 import './index.css';
 
@@ -25,7 +26,8 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
             setHasErrors(true);
         } else {
             const item = setItemTask(description, priority, status, Date.now().toString());
-            setTaskList([item, ...tasksList,]);
+            setTaskList([item, ...tasksList]);
+            setArrToLocalStorage(savedTasksList, [item, ...tasksList]);
             clearValues();
         }
     };

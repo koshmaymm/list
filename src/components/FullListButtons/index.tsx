@@ -1,10 +1,13 @@
 import Button from "@mui/material/Button"
+import { savedSelectedList } from "../../helpers";
+import { setArrToLocalStorage } from "../../utils";
 import { TaskItem, FullListButtonsProps } from "../../interfaces";
 
 const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEditableItem, removeTask }: FullListButtonsProps) => {
 
     const selectHandler = (id: string): void => {
-        setSelectedList([...selectedList, id])
+        setSelectedList([...selectedList, id]);
+        setArrToLocalStorage(savedSelectedList, [...selectedList, id]);
     }
 
     const editHandler = (item: TaskItem): void => {

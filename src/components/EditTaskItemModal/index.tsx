@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Modal, Fade, Checkbox, Backdrop, FormControlLabel, Button, Typography, Box, TextField } from '@mui/material';
-import { setItemTask } from '../../utils';
+import { setArrToLocalStorage, setItemTask } from '../../utils';
+import { savedTasksList } from '../../helpers';
 import { EditTaskItemModalProps } from '../../interfaces';
 import "./index.css";
 
@@ -54,6 +55,7 @@ const EditTaskItemModal = ({
                 }
             })
             setTaskList(nextList);
+            setArrToLocalStorage(savedTasksList, [item, ...tasksList]);
             if (status) {
                 removeFromSelected(item.id);
             }

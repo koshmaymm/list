@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { List, ListItem, Button, Typography, ListItemText, Divider, Rating } from '@mui/material';
-import { listDefaultStyle } from '../../helpers';
+import { setArrToLocalStorage } from '../../utils';
+import { listDefaultStyle, savedSelectedList } from '../../helpers';
 import { TaskItem, SelectedListProps } from '../../interfaces';
 import './index.css';
 
@@ -8,7 +9,8 @@ const SelectedList = ({ favoriteList, selectedList, setSelectedList }: SelectedL
 
     const removeHandler = (id: string) => {
         const nextSelectedList = selectedList.filter(itemId => itemId !== id);
-        setSelectedList(nextSelectedList)
+        setSelectedList(nextSelectedList);
+        setArrToLocalStorage(savedSelectedList, nextSelectedList);
     }
 
     if (!favoriteList.length) {

@@ -3,3 +3,6 @@ export const listDefaultStyle = {
     overflow: 'auto',
     maxHeight: 510,
 }
+
+export const savedTasksList = "savedTasksList";
+export const savedSelectedList = "savedSelectedList";

@@ -4,7 +4,9 @@ import AddNewTaskForm from '../../components/AddNewTaskForm';
 import EditTaskItemModal from '../../components/EditTaskItemModal';
 import FullList from '../../components/FullList';
 import SelectedList from '../../components/SelectedList';
+import { savedSelectedList, savedTasksList } from '../../helpers';
 import { TaskItem } from '../../interfaces';
+import { setArrToLocalStorage } from '../../utils';
 import "./index.css";
 
 const MainPage = () => {
@@ -14,19 +16,24 @@ const MainPage = () => {
     const [editableItem, setEditableItem] = useState<TaskItem | null>(null);
     const [open, setOpen] = useState(false);
 
-
-    console.log("tasksList ", tasksList)
-    console.log("selectedList ", selectedList)
-
     const removeFromSelected = (id: string) => {
         const nextList = selectedList.filter(taskId => taskId !== id);
         setSelectedList(nextList);
+        setArrToLocalStorage(savedSelectedList, nextList);
     }
 
     const removeTask = (id: string) => {
         const nextList = tasksList.filter(task => task.id !== id);
         setTaskList(nextList);
+        setArrToLocalStorage(savedTasksList, nextList);
         removeFromSelected(id);
+    }
+
+    const getStorageLists = () => {
+        const tempAllTasks =  localStorage.getItem(savedTasksList) || "";
+        const tempSelectedTasks =  localStorage.getItem(savedSelectedList) || "";
+        setTaskList(JSON.parse(tempAllTasks));
+        setSelectedList(JSON.parse(tempSelectedTasks));
     }
 
     const setFilteredListBySelect = useCallback(() => {
@@ -44,10 +51,13 @@ const MainPage = () => {
         }
     }, [tasksList, selectedList]);
 
-
     useEffect(() => {
         setFilteredListBySelect();
     }, [tasksList, selectedList, setFilteredListBySelect])
+
+    useEffect(() => {
+        getStorageLists();
+    }, [])
 
     return (
         <div className="main-page">
