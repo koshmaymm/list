@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Checkbox, FormControlLabel, Button, Typography, Box, TextField } from '@mui/material';
+import { setItemTask } from '../../utils';
 import { AddNewTaskFormProps } from '../../interfaces';
 import './index.css';
 
@@ -16,15 +17,6 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
         setStatus(false);
     }
 
-    const setItemTask = (description: string, priority: string | number, done: boolean, id: string) => {
-        return {
-            description,
-            priority,
-            done,
-            id
-        }
-    }
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setHasErrors(false);
@@ -37,8 +29,6 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
             clearValues();
         }
     };
-
-
 
     return (
         <div>

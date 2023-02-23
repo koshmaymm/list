@@ -2,7 +2,9 @@ import * as React from 'react';
 import { List, ListItem, Divider, ListItemText, Typography } from '@mui/material';
 import FullListButtons from '../FullListButtons';
 import { TaskItem, FullListProps } from '../../interfaces';
+
 import './index.css';
+import { listDefaultStyle } from '../../helpers';
 
 const FullList = ({
     tasksList,
@@ -31,11 +33,7 @@ const FullList = ({
     return (
         <div>
             <h2>Full task list</h2>
-            <List sx={{
-                bgcolor: 'background.paper',
-                overflow: 'auto',
-                maxHeight: 470,
-            }}>
+            <List sx={listDefaultStyle}>
                 {
                     tasksList.map((item: TaskItem) => {
                         return (

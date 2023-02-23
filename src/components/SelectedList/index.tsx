@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import { List, ListItem, Button, Typography, ListItemText, Divider, Rating } from '@mui/material';
+import { listDefaultStyle } from '../../helpers';
 import { TaskItem, SelectedListProps } from '../../interfaces';
 import './index.css';
 
 const SelectedList = ({ favoriteList, selectedList, setSelectedList }: SelectedListProps) => {
-
 
     const removeHandler = (id: string) => {
         const nextSelectedList = selectedList.filter(itemId => itemId !== id);
@@ -28,11 +28,7 @@ const SelectedList = ({ favoriteList, selectedList, setSelectedList }: SelectedL
     return (
         <div>
             <h2>Selected task list</h2>
-            <List sx={{
-                bgcolor: 'background.paper',
-                overflow: 'auto',
-                maxHeight: 470,
-            }}>
+            <List sx={listDefaultStyle}>
                 {
                     favoriteList.map((item: TaskItem) => {
                         return (

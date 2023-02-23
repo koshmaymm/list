@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Modal, Fade, Checkbox, Backdrop, FormControlLabel, Button, Typography, Box, TextField } from '@mui/material';
+import { setItemTask } from '../../utils';
 import { EditTaskItemModalProps } from '../../interfaces';
 import "./index.css";
 
@@ -35,15 +36,6 @@ const EditTaskItemModal = ({
         setEditableItem(null)
     }
 
-    const setItemTask = (description: string, priority: string | number, done: boolean, id: string) => {
-        return {
-            description,
-            priority,
-            done,
-            id
-        }
-    }
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setHasErrors(false);
@@ -65,7 +57,6 @@ const EditTaskItemModal = ({
             if (status) {
                 removeFromSelected(item.id);
             }
-
             handleClose();
         }
     }
