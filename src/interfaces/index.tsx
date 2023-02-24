@@ -20,6 +20,12 @@ export interface FullListProps {
     removeTask: (id: string) => void;
 }
 
+export interface SelectedListItemProps {
+    item: TaskItem;
+    selectedList: string[];
+    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
 export interface FullItemListProps {
     item: TaskItem;
     setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
