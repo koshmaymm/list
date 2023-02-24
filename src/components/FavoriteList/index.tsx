@@ -13,7 +13,9 @@ const FavoriteList = ({
     const [favoriteList, setFavoriteList] = useState<TaskItem[]>([]);
 
     const setFavoriteListHandler = useCallback(() => {
-        const nextList = tasksList.filter((task) => (task.isSelected && !task.done));
+        const nextList = tasksList
+            .filter((task) => (task.isSelected && !task.done))
+            .sort((a: TaskItem, b: TaskItem) => Number(b.priority) - Number(a.priority));
         setFavoriteList(nextList);
     }, [tasksList]);
 
