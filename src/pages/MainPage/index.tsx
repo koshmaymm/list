@@ -6,7 +6,7 @@ import FavoriteList from '../../components/FavoriteList';
 import FullList from '../../components/FullList';
 import { savedTasksList } from '../../helpers';
 import { TaskItem } from '../../interfaces';
-import { setArrToLocalStorage, setItemTask } from '../../utils';
+import { setArrToLocalStorage } from '../../utils';
 
 import "./index.css";
 
@@ -26,13 +26,12 @@ const MainPage = () => {
     }
 
     const editTask = (nextTask: TaskItem) => {
-        const item = setItemTask(nextTask!.description, nextTask.priority, nextTask.done, nextTask!.id, nextTask?.isSelected);
         const nextList = tasksList.map((task) => {
             if (task.id !== nextTask!.id) {
                 return task;
             } else {
                 return {
-                    ...item
+                    ...nextTask
                 }
             }
         });
