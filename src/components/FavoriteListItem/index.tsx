@@ -1,19 +1,15 @@
 import { ListItem, Divider, ListItemText, Typography, Rating, Button } from '@mui/material';
 import { Fragment } from 'react';
-import { savedSelectedList } from '../../helpers';
-import { SelectedListItemProps } from '../../interfaces';
-import { setArrToLocalStorage } from '../../utils';
+import { FavoriteListItemProps, TaskItem } from '../../interfaces';
+import "./index.css";
 
-const SelectedListItem = ({
+const FavoriteListItem = ({
     item,
-    selectedList,
-    setSelectedList
-}: SelectedListItemProps) => {
+    editTask
+}: FavoriteListItemProps) => {
 
-    const removeHandler = (id: string) => {
-        const nextSelectedList = selectedList.filter(itemId => itemId !== id);
-        setSelectedList(nextSelectedList);
-        setArrToLocalStorage(savedSelectedList, nextSelectedList);
+    const unselectTask = (item: TaskItem) => {
+        editTask({ ...item, isSelected: false })
     }
 
     return (
@@ -36,13 +32,12 @@ const SelectedListItem = ({
                                 <Button
                                     type="submit"
                                     variant="contained"
-                                    onClick={() => removeHandler(item.id)}
-                                    disabled={item.done}
+                                    onClick={() => unselectTask(item)}
                                     size="large"
                                     color="inherit"
                                     className='button-default'
                                 >
-                                    Remove from Selected
+                                    Remove from selected
                                 </Button>
                             </span>
                         </Fragment>
@@ -54,4 +49,4 @@ const SelectedListItem = ({
     )
 }
 
-export default SelectedListItem;
+export default FavoriteListItem;

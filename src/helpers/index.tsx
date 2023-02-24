@@ -5,4 +5,3 @@ export const listDefaultStyle = {
 }
 
 export const savedTasksList = "savedTasksList";
-export const savedSelectedList = "savedSelectedList";

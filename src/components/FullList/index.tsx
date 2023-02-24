@@ -8,11 +8,10 @@ import './index.css';
 const FullList = ({
     tasksList,
     setTaskList,
-    selectedList,
-    setSelectedList,
     setOpen,
     setEditableItem,
-    removeTask
+    removeTask,
+    editTask
 }: FullListProps) => {
 
     if (!tasksList.length) {
@@ -34,11 +33,10 @@ const FullList = ({
                                 key={item.id}
                                 item={item}
                                 setTaskList={setTaskList}
-                                selectedList={selectedList}
-                                setSelectedList={setSelectedList}
                                 setOpen={setOpen}
                                 setEditableItem={setEditableItem}
                                 removeTask={removeTask}
+                                editTask={editTask}
                             />
                         )
                     })

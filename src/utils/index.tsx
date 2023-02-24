@@ -1,11 +1,12 @@
 import { TaskItem } from "../interfaces";
 
-export const setItemTask = (description: string, priority: string | number, done: boolean, id: string) => {
+export const setItemTask = (description: string, priority: string | number, done: boolean, id: string, isSelected: boolean) => {
     return {
         description,
         priority,
         done,
-        id
+        id,
+        isSelected
     }
 }
 

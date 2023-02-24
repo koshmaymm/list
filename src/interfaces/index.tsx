@@ -3,6 +3,7 @@ export interface TaskItem {
     priority: string | number;
     done: boolean;
     id: string;
+    isSelected: boolean;
 }
 
 export interface AddNewTaskFormProps {
@@ -13,42 +14,38 @@ export interface AddNewTaskFormProps {
 export interface FullListProps {
     tasksList: TaskItem[];
     setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
-    selectedList: string[];
-    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setEditableItem: React.Dispatch<React.SetStateAction<TaskItem | null>>;
     removeTask: (id: string) => void;
+    editTask: (nextTask: TaskItem) => void;
 }
 
-export interface SelectedListItemProps {
+export interface FavoriteListProps {
+    tasksList: TaskItem[];
+    editTask: (nextTask: TaskItem) => void;
+}
+
+export interface FavoriteListItemProps {
     item: TaskItem;
-    selectedList: string[];
-    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
+    editTask: (nextTask: TaskItem) => void;
 }
 
 export interface FullItemListProps {
     item: TaskItem;
     setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
-    selectedList: string[];
-    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setEditableItem: React.Dispatch<React.SetStateAction<TaskItem | null>>;
     removeTask: (id: string) => void;
+    editTask: (nextTask: TaskItem) => void;
 }
 
 export interface FullListButtonsProps {
     item: TaskItem;
     setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
-    selectedList: string[];
-    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setEditableItem: React.Dispatch<React.SetStateAction<TaskItem | null>>;
     removeTask: (id: string) => void;
-}
-export interface SelectedListProps {
-    favoriteList: TaskItem[];
-    selectedList: string[];
-    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
+    editTask: (nextTask: TaskItem) => void; 
 }
 
 export interface EditTaskItemModalProps {
@@ -56,7 +53,5 @@ export interface EditTaskItemModalProps {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     editableItem: TaskItem | null;
     setEditableItem: React.Dispatch<React.SetStateAction<TaskItem | null>>;
-    tasksList: TaskItem[];
-    setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
-    removeFromSelected: (id: string) => void;
+    editTask: (nextTask: TaskItem) => void;
 }

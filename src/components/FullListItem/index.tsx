@@ -6,11 +6,10 @@ import FullListButtons from '../FullListButtons';
 const FullListItem = ({
     item,
     setTaskList,
-    selectedList,
-    setSelectedList,
     setOpen,
     setEditableItem,
-    removeTask
+    removeTask,
+    editTask
 }: FullItemListProps) => {
     return (
         <div key={item.id}>
@@ -34,11 +33,10 @@ const FullListItem = ({
             <FullListButtons
                 item={item}
                 setTaskList={setTaskList}
-                selectedList={selectedList}
-                setSelectedList={setSelectedList}
                 setOpen={setOpen}
                 setEditableItem={setEditableItem}
                 removeTask={removeTask}
+                editTask={editTask}
             />
         </div>
     )
