@@ -55,7 +55,7 @@ const EditTaskItemModal = ({
                 }
             })
             setTaskList(nextList);
-            setArrToLocalStorage(savedTasksList, [item, ...tasksList]);
+            setArrToLocalStorage(savedTasksList, nextList);
             if (status) {
                 removeFromSelected(item.id);
             }
