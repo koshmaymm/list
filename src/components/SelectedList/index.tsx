@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { List, ListItem, Button, Typography, ListItemText, Divider, Rating } from '@mui/material';
+import EmptyList from '../EmptyList';
 import { setArrToLocalStorage } from '../../utils';
 import { listDefaultStyle, savedSelectedList } from '../../helpers';
 import { TaskItem, SelectedListProps } from '../../interfaces';
@@ -16,13 +17,7 @@ const SelectedList = ({ favoriteList, selectedList, setSelectedList }: SelectedL
     if (!favoriteList.length) {
         return (<div>
             <h2>Selected task list</h2>
-            <List sx={{ bgcolor: 'background.paper' }}>
-                <ListItem alignItems="flex-start">
-                    <ListItemText
-                        primary="Empty Task List"
-                    />
-                </ListItem>
-            </List>
+            <EmptyList />
         </div>
         )
     }

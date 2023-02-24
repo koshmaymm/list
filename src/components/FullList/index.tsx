@@ -1,11 +1,9 @@
-import * as React from 'react';
-import { List, ListItem, Divider, ListItemText, Typography } from '@mui/material';
+import { List } from '@mui/material';
 import FullListItem from '../FullListItem';
-import FullListButtons from '../FullListButtons';
+import EmptyList from '../EmptyList';
 import { TaskItem, FullListProps } from '../../interfaces';
-
-import './index.css';
 import { listDefaultStyle } from '../../helpers';
+import './index.css';
 
 const FullList = ({
     tasksList,
@@ -20,13 +18,7 @@ const FullList = ({
     if (!tasksList.length) {
         return (<div>
             <h2>Full task list</h2>
-            <List sx={{ bgcolor: 'background.paper' }}>
-                <ListItem alignItems="flex-start">
-                    <ListItemText
-                        primary="Empty Task List"
-                    />
-                </ListItem>
-            </List>
+            <EmptyList />
         </div>
         )
     }
