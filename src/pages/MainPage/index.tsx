@@ -30,10 +30,10 @@ const MainPage = () => {
     }
 
     const getStorageLists = () => {
-        const tempAllTasks =  localStorage.getItem(savedTasksList) || "";
-        const tempSelectedTasks =  localStorage.getItem(savedSelectedList) || "";
-        setTaskList(JSON.parse(tempAllTasks));
-        setSelectedList(JSON.parse(tempSelectedTasks));
+        const tempAllTasks = localStorage.getItem(savedTasksList);
+        const tempSelectedTasks = localStorage.getItem(savedSelectedList);
+        setTaskList(tempAllTasks ? JSON.parse(tempAllTasks) : []);
+        setSelectedList(tempSelectedTasks ? JSON.parse(tempSelectedTasks) : []);
     }
 
     const setFilteredListBySelect = useCallback(() => {
