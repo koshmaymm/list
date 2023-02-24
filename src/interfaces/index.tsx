@@ -20,6 +20,16 @@ export interface FullListProps {
     removeTask: (id: string) => void;
 }
 
+export interface FullItemListProps {
+    item: TaskItem;
+    setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
+    selectedList: string[];
+    setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setEditableItem: React.Dispatch<React.SetStateAction<TaskItem | null>>;
+    removeTask: (id: string) => void;
+}
+
 export interface FullListButtonsProps {
     item: TaskItem;
     setTaskList: React.Dispatch<React.SetStateAction<TaskItem[]>>;
