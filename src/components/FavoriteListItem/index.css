@@ -1,17 +1,7 @@
-.task-item > span {
-  font-weight: bold;
-}
-
 .rating-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.button-default {
-  color: gray;
-  font-weight: bold;
-  border: 2px solid gray;
 }
 
 @media (max-width: 726px) {

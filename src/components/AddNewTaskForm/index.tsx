@@ -25,7 +25,7 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
         if ((description.length < 5) || (Number(priority) < 1) || (Number(priority) > 10)) {
             setHasErrors(true);
         } else {
-            const item = setItemTask(description, priority, status, Date.now().toString());
+            const item = setItemTask(description, priority, status, Date.now().toString(), false);
             setTaskList([item, ...tasksList]);
             setArrToLocalStorage(savedTasksList, [item, ...tasksList]);
             clearValues();
@@ -67,16 +67,15 @@ const AddNewTaskForm = ({ tasksList, setTaskList }: AddNewTaskFormProps) => {
                     />
                     <FormControlLabel
                         className='status'
+                        label="Status"
                         control={<Checkbox
                             id="status"
                             name="status"
                             checked={status}
-
                             value={status}
                             onChange={(e) => setStatus(e.target.checked)}
                         />
                         }
-                        label="Status"
                     />
                 </div>
                 <Button

@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Modal, Fade, Checkbox, Backdrop, FormControlLabel, Button, Typography, Box, TextField } from '@mui/material';
-import { setArrToLocalStorage, setItemTask } from '../../utils';
-import { savedTasksList } from '../../helpers';
+import { setItemTask } from '../../utils';
 import { EditTaskItemModalProps } from '../../interfaces';
 import "./index.css";
 
@@ -23,9 +22,7 @@ const EditTaskItemModal = ({
     setOpen,
     editableItem,
     setEditableItem,
-    tasksList,
-    setTaskList,
-    removeFromSelected
+    editTask,
 }: EditTaskItemModalProps) => {
 
     const [priority, setPriority] = useState('');
@@ -44,21 +41,8 @@ const EditTaskItemModal = ({
         if ((Number(priority) < 1) || (Number(priority) > 10)) {
             setHasErrors(true);
         } else {
-            const item = setItemTask(editableItem!.description, priority, status, editableItem!.id);
-            const nextList = tasksList.map((task) => {
-                if (task.id !== editableItem!.id) {
-                    return task;
-                } else {
-                    return {
-                        ...item
-                    }
-                }
-            })
-            setTaskList(nextList);
-            setArrToLocalStorage(savedTasksList, [item, ...tasksList]);
-            if (status) {
-                removeFromSelected(item.id);
-            }
+            const item = setItemTask(editableItem!.description, priority, status, editableItem!.id, !!editableItem?.isSelected);
+            editTask(item);
             handleClose();
         }
     }
@@ -107,8 +91,6 @@ const EditTaskItemModal = ({
                             label="Task Description"
                             name="description"
                             value={editableItem!.description || ""}
-                            // value={"ddd"}
-
                             disabled
                         />
                         <div className='wrapper'>

@@ -1,14 +1,7 @@
-import Button from "@mui/material/Button"
-import { savedSelectedList } from "../../helpers";
-import { setArrToLocalStorage } from "../../utils";
+import Button from "@mui/material/Button";
 import { TaskItem, FullListButtonsProps } from "../../interfaces";
 
-const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEditableItem, removeTask }: FullListButtonsProps) => {
-
-    const selectHandler = (id: string): void => {
-        setSelectedList([...selectedList, id]);
-        setArrToLocalStorage(savedSelectedList, [...selectedList, id]);
-    }
+const FullListButtons = ({ item, setOpen, setEditableItem, removeTask, editTask }: FullListButtonsProps) => {
 
     const editHandler = (item: TaskItem): void => {
         setOpen(true);
@@ -19,9 +12,9 @@ const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEdit
         removeTask(id);
     }
 
-    const findElement = (item: TaskItem): boolean => {
-        const find = !!selectedList.find(elem => elem === item.id)
-        return find;
+    const selectHandler = (item: TaskItem, flag: boolean) => {
+        const selectedItem = { ...item, isSelected: flag };
+        editTask(selectedItem);
     }
 
     return (
@@ -29,9 +22,9 @@ const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEdit
             <Button
                 color="secondary"
                 variant="contained"
-                onClick={() => selectHandler(item.id)}
-                disabled={item.done || findElement(item)}
                 size="large"
+                onClick={() => { selectHandler(item, true) }}
+                disabled={item.isSelected}
             >
                 Select
             </Button>
@@ -54,7 +47,7 @@ const FullListButtons = ({ item, setSelectedList, selectedList, setOpen, setEdit
             >
                 Delete
             </Button>
-        </div>
+        </div >
     )
 }
 
