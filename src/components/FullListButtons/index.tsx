@@ -24,7 +24,7 @@ const FullListButtons = ({ item, setOpen, setEditableItem, removeTask, editTask 
                 variant="contained"
                 size="large"
                 onClick={() => { selectHandler(item, true) }}
-                disabled={item.isSelected}
+                disabled={item.isSelected || item.done}
             >
                 Select
             </Button>
